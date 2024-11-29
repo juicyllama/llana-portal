@@ -1,0 +1,63 @@
+{
+  "name": "@juicyllama/llana-portal",
+  "version": "0.0.0",
+  "description": "Portal  for Llana, the no-code API wrapper that exposes a REST API for any database within minutes. No longer spend time building APIs, just connect your database and start using the API. Open source, free to use, and no vendor lock-in.",
+  "author": {
+    "name": "JuicyLlama Studio",
+    "email": "studio@juicyllama.com",
+    "url": "https://juicyllama.com"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juicyllama/llana"
+  },
+  "bugs": "https://llana.io",
+  "license": "BSD-4-Clause",
+  "readmeFilename": "README.md",
+  "type": "module",
+  "tags": [
+    "llana",
+    "portal",
+    "nuxt"
+  ],
+  "keywords": [
+    "llana",
+    "portal",
+    "nuxt"
+  ],
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.23",
+    "@iconify-json/ph": "^1.2.1",
+    "@iconify/vue": "^4.1.2",
+    "@nuxt/icon": "^1.8.2",
+    "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly",
+    "@vee-validate/zod": "^4.14.7",
+    "nuxt": "^3.14.1592",
+    "vee-validate": "^4.14.7",
+    "vue": "latest",
+    "vue-router": "latest",
+    "zod": "^3.23.8"
+  },
+  "prettier": {
+		"singleQuote": true,
+		"trailingComma": "all",
+		"tabWidth": 4,
+		"useTabs": true,
+		"semi": false,
+		"printWidth": 120,
+		"arrowParens": "avoid",
+		"bracketSpacing": true,
+		"bracketSameLine": true
+	}
+}

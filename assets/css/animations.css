@@ -1,0 +1,101 @@
+/** Animations */
+
+html {
+	scroll-behavior: smooth;
+}
+
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+	animation-play-state: paused !important;
+}
+
+@keyframes slideInLeft {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInUp {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInDown {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+}
+
+@keyframes shake {
+	0% { transform: rotate(0); }
+	15% { transform: rotate(5deg); }
+	30% { transform: rotate(-5deg); }
+	45% { transform: rotate(4deg); }
+	60% { transform: rotate(-4deg); }
+	75% { transform: rotate(2deg); }
+	85% { transform: rotate(-2deg); }
+	92% { transform: rotate(1deg); }
+	100% { transform: rotate(0); }
+  }
+
+.slideInDown {
+	animation-name: slideInDown;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+.slideInUp {
+	animation-name: slideInUp;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+.slideInRight {
+	animation-name: slideInRight;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+.slideInLeft {
+	animation-name: slideInLeft;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+.bounce {
+	animation: bounce 2s ease;
+}
+
+.bounceInfinite {
+	animation: bounce 2s ease infinite;
+}
+
+.shake {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
