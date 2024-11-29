@@ -1,6 +1,6 @@
 {
   "name": "@juicyllama/llana-portal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Portal  for Llana, the no-code API wrapper that exposes a REST API for any database within minutes. No longer spend time building APIs, just connect your database and start using the API. Open source, free to use, and no vendor lock-in.",
   "author": {
     "name": "JuicyLlama Studio",
@@ -51,14 +51,14 @@
     "zod": "^3.23.8"
   },
   "prettier": {
-		"singleQuote": true,
-		"trailingComma": "all",
-		"tabWidth": 4,
-		"useTabs": true,
-		"semi": false,
-		"printWidth": 120,
-		"arrowParens": "avoid",
-		"bracketSpacing": true,
-		"bracketSameLine": true
-	}
+    "singleQuote": true,
+    "trailingComma": "all",
+    "tabWidth": 4,
+    "useTabs": true,
+    "semi": false,
+    "printWidth": 120,
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "bracketSameLine": true
+  }
 }
