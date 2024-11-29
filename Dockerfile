@@ -4,42 +4,34 @@
 
 ARG NODE_VERSION=22
 
-# Use a builder step to download various dependencies
-FROM node:${NODE_VERSION}-alpine AS build
+FROM node:${NODE_VERSION}-slim as base
 
-# Install git and other OS dependencies
-RUN apk add --no-cache git
+ARG PORT=3000
 
-WORKDIR /usr/src/app
+WORKDIR /src
+
+FROM base as build
+
+COPY --link package.json package-lock.json ./
+
+RUN npm install
 
 COPY . .
 
-RUN chown -R node:node /usr/src/app
-
-USER node
-
-RUN cd /usr/src/app
-
-# Install the dependencies
-RUN npm install
 RUN npm run build
+
 
 ###################
 # PRODUCTION
 ###################
 
-FROM node:${NODE_VERSION}-alpine AS production
+FROM base
 
-WORKDIR /usr/src/app
+ENV PORT=$PORT
+ENV NODE_ENV=production
 
-# Copy the app from the build stage
-COPY --chown=node:node --from=build /usr/src/app .
+COPY --from=build /src/.output /src/.output
+# Optional, only needed if you rely on unbundled dependencies
+# COPY --from=build /src/node_modules /src/node_modules
 
-RUN chown -R node:node /usr/src/app
-
-USER node
-
-RUN cd /usr/src/app
-
-CMD [ "node .output/server/index.mjs" ]
-
+CMD [ "node", ".output/server/index.mjs" ]

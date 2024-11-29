@@ -11,3 +11,12 @@ services:
         environment:
             DOMAIN: ${DOMAIN}
             ADMIN_EMAIL: ${ADMIN_EMAIL}
+
+    # docker-app:
+    #     container_name: docker-app
+    #     image: juicyllama/llana-portal:latest
+    #     ports:
+    #         - "3000:55262"
+    #     environment:
+    #         DOMAIN: ${DOMAIN}
+    #         ADMIN_EMAIL: ${ADMIN_EMAIL}
