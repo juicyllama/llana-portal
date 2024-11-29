@@ -34,7 +34,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "docker:build": "sh ./scripts/docker.build.sh"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",

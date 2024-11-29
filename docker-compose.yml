@@ -1,0 +1,13 @@
+name: llana-portal
+
+services:
+    app:
+        container_name: app
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "3000:55262"
+        environment:
+            DOMAIN: ${DOMAIN}
+            ADMIN_EMAIL: ${ADMIN_EMAIL}
