@@ -4,13 +4,13 @@
 
 ARG NODE_VERSION=20
 
-FROM node:${NODE_VERSION}-slim as base
+FROM node:${NODE_VERSION}-slim AS base
 
 ARG PORT=55262
 
 WORKDIR /src
 
-FROM base as build
+FROM base AS build
 
 COPY --link package.json package-lock.json ./
 
