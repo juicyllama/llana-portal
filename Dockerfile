@@ -2,7 +2,7 @@
 # BUILD
 ###################
 
-ARG NODE_VERSION=22
+ARG NODE_VERSION=20
 
 FROM node:${NODE_VERSION}-slim as base
 
@@ -14,7 +14,7 @@ FROM base as build
 
 COPY --link package.json package-lock.json ./
 
-RUN npm install
+RUN npm install --verbose
 
 COPY . .
 
