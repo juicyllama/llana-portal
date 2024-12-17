@@ -45,16 +45,27 @@ function setTab(name: string) {
 
             <div v-if="tab === 'Config'">
               <h2 class="mt-10 text-2xl/9 font-bold tracking-tight text-gray-900">Config</h2>
+                <Alert type="error">TODO: <a href="https://github.com/juicyllama/llana-portal/issues/2" target="_blank" class="underline">https://github.com/juicyllama/llana-portal/issues/2</a></Alert>
             </div>
 
 
             <div v-if="tab === 'Authentication'">
               <h2 class="mt-10 text-2xl/9 font-bold tracking-tight text-gray-900">Authentication</h2>
+              <Alert type="error">TODO: <a href="https://github.com/juicyllama/llana-portal/issues/3" target="_blank" class="underline">https://github.com/juicyllama/llana-portal/issues/3</a></Alert>
+           
             </div>
 
 
             <div v-if="tab === 'Roles'">
               <h2 class="mt-10 text-2xl/9 font-bold tracking-tight text-gray-900">Roles</h2>
+              <Alert type="error">TODO: <a href="https://github.com/juicyllama/llana-portal/issues/4" target="_blank" class="underline">https://github.com/juicyllama/llana-portal/issues/4</a></Alert>
+           
+            </div>
+
+            <div v-if="tab === 'Relations'">
+              <h2 class="mt-10 text-2xl/9 font-bold tracking-tight text-gray-900">Relations</h2>
+              <Alert type="error">TODO: <a href="https://github.com/juicyllama/llana-portal/issues/5" target="_blank" class="underline">https://github.com/juicyllama/llana-portal/issues/5</a></Alert>
+           
             </div>
 
         </div>

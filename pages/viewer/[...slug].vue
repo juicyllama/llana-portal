@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Capitalize } from '~/utils/strings'
 import { Operator } from '~/types/llana'
 const config = useRuntimeConfig()
 

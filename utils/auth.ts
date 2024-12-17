@@ -53,6 +53,9 @@ export async function $login(auth_type = AuthType.HOST, auth?: AuthCredentials):
 				}
 
 				if(auth.username !== runtimeConfig.public.ADMIN_EMAIL){
+					console.log(runtimeConfig.public.ADMIN_EMAIL)
+					console.error('runtimeConfig.public', runtimeConfig.public)
+					console.error('auth', auth)
 					return {
 						authenticated: false,
 						error: 'Email incorrect, only admin email is allowed'
