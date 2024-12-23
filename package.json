@@ -41,7 +41,7 @@
     "@headlessui/vue": "^1.7.23",
     "@iconify-json/ph": "^1.2.1",
     "@iconify/vue": "^4.1.2",
-    "@nuxt/icon": "^1.8.2",
+    "@nuxt/icon": "^1.10.3",
     "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly",
     "@vee-validate/zod": "^4.14.7",
     "nuxt": "^3.14.1592",
