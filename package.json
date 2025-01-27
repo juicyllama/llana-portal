@@ -44,7 +44,7 @@
     "@nuxt/icon": "^1.8.2",
     "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly",
     "@vee-validate/zod": "^4.14.7",
-    "nuxt": "^3.14.1592",
+    "nuxt": "^3.15.3",
     "vee-validate": "^4.14.7",
     "vue": "latest",
     "vue-router": "latest",
