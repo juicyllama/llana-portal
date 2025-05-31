@@ -39,9 +39,17 @@ export interface Filter {
     value: string
 }
 
+export enum ColumnType {
+    string = 'string',
+    number = 'number',
+    boolean = 'boolean',
+    date = 'date',
+    enum = 'enum'
+}
+
 export interface Column {
     field: string
-    type: 'string' | 'number' | 'boolean' | 'date'
+    type: ColumnType
     nullable: boolean
     required: boolean
     primary_key: boolean
@@ -49,6 +57,7 @@ export interface Column {
     foreign_key: boolean
     default: null | string
     extra: string
+    enums?: string[]
 }
 
 export interface Relation {

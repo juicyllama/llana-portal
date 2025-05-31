@@ -29,11 +29,11 @@ const pageRange = computed(() => {
         <!-- Previous -->
         <div class="-mt-px flex w-0 flex-1">
             <a v-if="list.offset > 0" @click="emit('pagination:previous')" href="#" class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:text-gray-700">
-                <Icon name="ph:caret-double-left-duotone" class="pr-6"/>
+                <Icon name="ph:caret-double-left" class="pr-6"/>
             Previous
             </a>
             <span v-else class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-300">
-                <Icon name="ph:caret-double-left-duotone" class="pr-6"/>
+                <Icon name="ph:caret-double-left" class="pr-6"/>
             Previous  
             </span>
         </div>
@@ -65,12 +65,12 @@ const pageRange = computed(() => {
   <div class="-mt-px flex w-0 flex-1 justify-end">
     <a v-if="list.total > (list.offset + list.pagination.total)" @click="emit('pagination:next')" href="#" class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:text-gray-700">
             Next
-            <Icon name="ph:caret-double-right-duotone" class="pl-6"/>
+            <Icon name="ph:caret-double-right" class="pl-6"/>
             </a>
             <span v-else class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-300">
                
                 Next  
-                <Icon name="ph:caret-double-right-duotone" class="pl-6"/>
+                <Icon name="ph:caret-double-right" class="pl-6"/>
             </span>
   </div>
 </nav>

@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
 	compatibilityDate: '2024-11-01',
 	devtools: { enabled: true },
+	ssr: false,
 	modules: [
 		'@nuxtjs/tailwindcss', 
 		'@nuxt/icon'
@@ -18,5 +19,6 @@ export default defineNuxtConfig({
 	css: [
 		'~/assets/css/main.css',
 		'~/assets/css/animations.css'
-	]
+	],
+	
 })

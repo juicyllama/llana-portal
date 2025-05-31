@@ -43,12 +43,13 @@
     "@iconify/vue": "^4.1.2",
     "@nuxt/icon": "^1.8.2",
     "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly",
-    "@vee-validate/zod": "^4.14.7",
+    "@vee-validate/zod": "^4.15.0",
     "nuxt": "^3.14.1592",
-    "vee-validate": "^4.14.7",
+    "nuxt-storage": "^1.2.2",
+    "vee-validate": "^4.15.0",
     "vue": "latest",
     "vue-router": "latest",
-    "zod": "^3.23.8"
+    "zod": "^3.25.42"
   },
   "prettier": {
     "singleQuote": true,

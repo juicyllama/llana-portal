@@ -9,15 +9,15 @@ const props = defineProps<Props>()
 let icon = ''
 
 if(props.column.primary_key){
-    icon = 'ph:key-duotone'
+    icon = 'ph:key'
 }else if(props.column.type === 'date'){
-    icon = 'ph:calendar-duotone'
+    icon = 'ph:calendar'
 }else if(props.column.type === 'number'){
-    icon = 'ph:hash-duotone'
+    icon = 'ph:hash'
 }else if(props.column.type === 'boolean'){
-    icon = 'ph:check-circle-duotone'
+    icon = 'ph:check-circle'
 }else{
-    icon = 'ph:cursor-text-duotone'
+    icon = 'ph:cursor-text'
 }
 
 </script>

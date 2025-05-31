@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+import Toast, { type ToastNotification } from '~/components/Toast.vue'
 
 useHead({
   title: 'Llana Portal :: Dashboard',
@@ -16,10 +17,24 @@ const path = router.currentRoute.value.path
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', current: path === '/dashboard' },
-  { name: 'Viewer', href: '/viewer', current: path.includes('/viewer') },
-  { name: 'Webhooks', href: '/webhooks', current: path === '/webhooks' },
-  { name: 'Settings', href: '/settings', current: path === '/settings' },
+  // { name: 'Viewer', href: '/viewer', current: path.includes('/viewer') },
+  // { name: 'Table Permissions', href: '/access', current: path.includes('/access') },
+  // { name: 'Caching', href: '/caching', current: path === '/caching' },
+  // { name: 'Webhooks', href: '/webhooks', current: path === '/webhooks' },
+
 ]
+
+const result = await $fetch({
+  endpoint: '/tables',
+  method: 'GET'
+})
+
+provide('schema', result.tables)
+
+const toast = ref<ToastNotification>({
+	show: false,
+})
+provide('toast', toast)
 
 async function logout(){
   await $logout()
@@ -34,7 +49,7 @@ async function logout(){
         <div class="flex h-16 justify-between">
           <div class="flex">
             <div class="flex shrink-0 items-center">
-              <a href="https://llana.io" target="_blank"><img class="block h-8 w-auto" src="/images/llana-32x32.png" alt="Dashboard" /></a>
+              <a href="/dashboard"><img class="block h-8 w-auto" src="/images/llana-32x32.png" alt="Dashboard" /></a>
             </div>
             <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
               <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'border-yellow-600 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
@@ -44,7 +59,7 @@ async function logout(){
             <button type="button" class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
               <span class="absolute -inset-1.5" />
               <span class="sr-only">View notifications</span>
-              <Icon name="ph:bell-ringing-duotone" class="block size-6 shake bell" aria-hidden="true" />
+              <Icon name="ph:bell-ringing" class="block size-6 shake bell" aria-hidden="true" />
             </button>
 
           <span class="text-xs cursor-pointer pl-4" @click="logout">Logout</span>
@@ -54,12 +69,12 @@ async function logout(){
             <button type="button" class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
               <span class="absolute -inset-1.5" />
               <span class="sr-only">View notifications</span>
-              <Icon name="ph:bell-ringing-duotone" class="block size-6 shake bell" aria-hidden="true" />
+              <Icon name="ph:bell-ringing" class="block size-6 shake bell" aria-hidden="true" />
             </button>
             <DisclosureButton class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
               <span class="absolute -inset-0.5" />
               <span class="sr-only">Open main menu</span>
-              <Icon name="ph:dots-three-outline-vertical-duotone" v-if="!open" class="block size-6" aria-hidden="true" />
+              <Icon name="ph:dots-three-outline-vertical" v-if="!open" class="block size-6" aria-hidden="true" />
               <Icon name="ph:x" v-else class="block size-6" aria-hidden="true" />
             </DisclosureButton>
           </div>
@@ -77,6 +92,7 @@ async function logout(){
     </Disclosure>
 
         <div class="py-10">
+          <Toast v-if="toast.show" :toast="toast" />
           <slot /> 
         </div>
     </div>

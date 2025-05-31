@@ -3,10 +3,14 @@ import { useField, useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import * as zod from 'zod';
 import { AuthType, type AuthCredentials } from "~/types/auth"
+import type { ToastNotification } from '~/components/Toast.vue';
 
 definePageMeta({
   layout: "login",
 });
+
+//const runtimeConfig = useRuntimeConfig();
+const toast = inject('toast') as Ref<ToastNotification>
 
 const validationSchema = toTypedSchema(
   zod.object({
@@ -27,6 +31,9 @@ const { value: password } = useField('password');
 const onSubmit = handleSubmit(async (values) => {
 
   error.value = null;
+  toast.value = {
+		show: false,
+	}
 
     try {
       const auth = await $login(AuthType.JWT, <AuthCredentials>{
@@ -35,12 +42,25 @@ const onSubmit = handleSubmit(async (values) => {
       });
 
       if(!auth.success) {
-        error.value = auth.error;
+        console.error(auth.error);
+        toast.value = {
+          show: true,
+          title: 'Login failed',
+          message: auth.error || 'An error occurred during login.',
+          type: 'error',
+          timeout: 20,
+        }
       }
 
     } catch (error) {
       console.error(error);
-      error.value = error.message;
+      toast.value = {
+          show: true,
+          title: 'Login failed',
+          message: error.message || 'An error occurred during login.',
+          type: 'error',
+          timeout: 20,
+        }
     }
 });
 
@@ -77,12 +97,6 @@ const onSubmit = handleSubmit(async (values) => {
           <button class="flex w-full justify-center rounded-md bg-yellow-500 first-letter:px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:ring-yellow-600">Sign in</button>
         </div>
       </form>
-
-      <Alert v-if="error" type="error" class="slideInUp mt-4 text-center">{{ error }}</Alert>
-
-      <p class="mt-10 text-center text-sm/6 text-gray-500">
-        <RouterLink to="/apikey" class="font-semibold text-yellow-500 hover:text-yellow-600">Login with API Key</RouterLink>
-      </p>
       
     </div>
   </div>
