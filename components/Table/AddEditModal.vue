@@ -13,6 +13,8 @@ const props = defineProps<{
     show: boolean;
     record?: any
     skipColumns?: string[]
+    hideColumns?: string[]
+    queryProps?: Record<string, any>
 }>();
 
 const emits = defineEmits<{
@@ -38,10 +40,14 @@ function setupFields(record?: any) {
         if(props.skipColumns?.includes(column.field)) return;
         
         // Use the field name to connect with the validation schema
-        fields.value[column.field] = useField(column.field, {
-            initialValue: initialValues[column.field] ?? undefined,
-        });
+        fields.value[column.field] = useField(column.field)
     });
+
+    setValues({
+        ...initialValues, 
+        ...props.queryProps, // Merge queryProps if provided
+    })
+
 }
 
 function postCleanup(values: any) {

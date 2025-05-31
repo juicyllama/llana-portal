@@ -38,10 +38,9 @@ try {
 					v-if="schema"
 					:schema="schema"
 					:title="`${table} Caching`"
-					:skip-columns="['id', 'table']"
-					:skip-schema="true"
+					:hideColumns="['id', 'table']"
 					:queryProps="{
-						table: table
+						table
 					}"
 					:cacheKeyOverride="`${table}::caching`"
 				/>

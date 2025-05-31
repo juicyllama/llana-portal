@@ -39,7 +39,6 @@ try {
 					:schema="schema"
 					:title="`${table} Caching`"
 					:skip-columns="['id', 'table']"
-					:skip-schema="true"
 					:queryProps="{
 						table: table
 					}"

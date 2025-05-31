@@ -54,6 +54,12 @@ const selectedRecord = ref({})
 const orderBy = ref(tablePreferences?.orderBy ?? props.schema.primary_key)
 const orderDirection = ref(tablePreferences?.orderDirection ?? props.orderDirection)
 
+if(props.hideColumns?.length && !tablePreferences?.hideColumns?.length) {
+    for(const column of props.hideColumns) {
+        addTablePreferences('hideColumns', [...(tablePreferences?.hideColumns || []), column])
+    }
+}
+
 function getColumns() {
 
     const columns = props.schema.columns.filter(column => {
@@ -75,11 +81,19 @@ function getColumnFields(){
 
 async function getData() {
 
-    const fields = getColumnFields().join(',')
+    let fields = getColumnFields().join(',')
+    if(props.queryProps && Object.keys(props.queryProps).length){
+        fields += ',' + Object.keys(props.queryProps).join(',')
+    }
+
+    if(!fields.split(',').includes(props.schema.primary_key)) {
+        fields += ',' + props.schema.primary_key
+    }
 
     try{
 
         loading.value = true
+
 
         const queryString = {
             sort: orderBy.value + '.' + orderDirection.value,
@@ -231,12 +245,12 @@ async function editRecord(record: any) {
 
 function addEditClose() {
     addEditModal.value = false
-    selectedRecord.value = {}
+    selectedRecord.value = props.queryProps || {}
 }
 
 async function addEditRefresh() {
     addEditModal.value = false
-    selectedRecord.value = {}
+    selectedRecord.value = props.queryProps || {}
     await getData()
 }
 
@@ -416,16 +430,12 @@ onMounted(async () => {
         :show="addEditModal"
         :schema="schema"
         :skipColumns="skipColumns"
+        :hideColumns="tablePreferences?.hideColumns || []"
+        :queryProps="queryProps"
         :record="selectedRecord"
         :domain="config.public.DOMAIN"
         @close="addEditClose"
         @refresh="addEditRefresh"
     />
-
-      <!-- TODO: Get code mirroring current selected options (e.g. fields, sort, etc) -->
-    <!-- TODO: View record + code to get single record with fields applied -->
-      <!-- TODO: Add Record -->
-       <!-- TODO: Update Record -->
-
 
 </template>
